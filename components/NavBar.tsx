@@ -1,18 +1,24 @@
 import Link from 'next/link'
-function NavBar() {
+import logo from '../public/images/logo.svg'
+import Image from 'next/image'
+function NavBar(production) {
     return (
-        <header className="bg-lightGrey">
-            <div className="h-12 grid grid-cols-3">
-                <div className="flex items-center mx-auto">
+        <>
+        <header className="flex bg-lightGrey h-20 items-center">
+           
+            <div className=" grid grid-cols-3">
+                <div className="">
                     <Link href="/">
-                        <p>Logo</p>
+                            <Image src={logo} height='200px'/>
                         </Link>
                 </div>
             <div className="h-12 flex items-center mx-auto">
                     
             </div>
+                    
+
             <div >
-                <nav className="h-12 flex items-center justify-around">
+                <nav className="flex h-full items-center justify-around text-sm" >
                     <Link href="/">
                         <a>Home</a>
                     </Link>
@@ -31,8 +37,12 @@ function NavBar() {
                         </Link>
                 </nav>
                 </div>
-                </div>
-        </header>
+                 
+            </div>
+            
+            </header>
+            </>
+        
     )
 }
 

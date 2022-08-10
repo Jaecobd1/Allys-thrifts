@@ -9,7 +9,7 @@ interface Props {
 }
 
 function Product({ product }: Props) {
-    console.log(product);
+    
     return (
         <>
             <Head>
@@ -17,27 +17,35 @@ function Product({ product }: Props) {
             </Head>
             <NavBar/>
         <div className="grid p-5 bg-primary w-screen h-screen justify-items-center">
-            <div className="text-6xl items-center">
+            <div className="text-6xl items-center p-5">
                 {/* Title */}
                 <h1>{product.name}</h1>
             </div>
-            <div>
+            <div className="w-full flex justify-center bg-white p-5">
                 {/* photos */}
                 <img
-                    className="w-full"
+                    className=""
                         src={urlFor(product.image).url()!
-                        } alt="" />
-            </div>
-            <div>
+                        } alt=""
+                        height='500'
+                        width='500'
+                    
+                    />
+                </div>
+                <div className="bg-primary w-full h-72 flex justify-around ">
+            <div className="">
                 {/* Info */}
                 <p>{product.description}</p>
-            </div>
+                </div>
+                
             <div>
                 <p>${product.price}</p>
                 </div>
-                <div className="bg-secondary flex w-32 rounded-full">
-                    <button>Buy Now</button>
-                </div>
+                <div className="bg-secondary flex h-12 w-24 rounded-full text-center">
+                    
+                    <button className="md:p-3 p-1" >Buy Now</button>
+                    </div>
+                    </div>
             </div>
             </>
     )
@@ -60,7 +68,7 @@ export const getStaticPaths = async () => {
 
     const paths = products.map((product: Product) => ({
         params: {
-            slug: product.slug.current,
+            slug: product.slug.current
         }
     }));
 

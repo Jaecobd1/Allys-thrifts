@@ -13,7 +13,8 @@ module.exports = {
     'lightPink': '#F0C6BB',
     'lightGrey': '#EEEBEB',
       'lightPeach': '#F6C3B4',
-    'darkGrey': '#373a46'
+      'darkGrey': '#373a46',
+    'white': '#ffffff',
 
   },
     extend: {

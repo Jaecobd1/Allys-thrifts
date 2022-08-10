@@ -1,12 +1,27 @@
 import MyDocument from "../pages/_document"
+import { sanityClient, urlFor } from '../utils/sanity'
+import { Production } from '../utils/typings'
 
 
-function Hero() {
+interface Props {
+    production: [Production];
+}
+
+
+function Hero(production) {
     return (
         <div>
             {/* Image */}
             <div>
-            
+              
+                    <>
+                    {/* <img
+                        className="w-full"
+                        src={urlFor(production.heroImg).url()!
+                        } alt="" /> */}
+                        </>
+                    
+                
             </div>
 
             {/* Text */}

@@ -15,7 +15,7 @@ export interface Product {
     isAvailable: boolean;
     name: string;
 
-}
+};
 export interface Post {
     _id: string;
     title: string;
@@ -25,14 +25,14 @@ export interface Post {
     visable: boolean;
     slug: string;
     createdAt: string;
-}
+};
 
 export interface Production {
+    bannerText: string;
     heroText: string;
     heroImg: string;
     homeBlock: string;
     homeImage2: string;
     meta: string;
-    bannerText: string;
     footerImg: string;
 }

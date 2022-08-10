@@ -4,31 +4,35 @@ import Image from 'next/image'
 import Hero from '../components/hero'
 import styles from '../styles/Home.module.css'
 import { useEffect } from 'react';
-import Products from '../components/products'
+import Products from '../components/Products'
 import { sanityClient, urlFor } from '../utils/sanity'
-import { Product, Post } from '../utils/typings'
+import { Product, Post, Production } from '../utils/typings'
 import BlogPosts from '../components/BlogPosts'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
+import Banner from '../components/Banner'
 
 
 interface Props {
   products: [Product];
   posts: [Post];
+  production: [Production];
 }
 
-export default function HomePage({ products, posts }: Props) {
-  console.log(products);
-  console.log(posts);
+export default function HomePage({ products, posts, production }: Props) {
   return (
     <>
-      <NavBar/>
+      <Head>
+        <title>Home</title>
+      </Head>
+      <NavBar />
+      <Banner production={production}/>
       <body>
       <div className="p-5 m-2">
-        <h1 className="text-4xl text-center">Ally's Thrifts</h1>
+        <h1 className="text-4xl text-center">Welcome Home</h1>
         </div>
         {/* Hero Section */}
-        <Hero />
+        <Hero production={production} />
         <Products products={products} />
        
         <BlogPosts posts={posts}/>
@@ -63,13 +67,21 @@ export const getServerSideProps = async () => {
   
   
 }`;
+  const productionQuery = `*[_type == 'production'][0]{
+  
+  heroImg,
+  bannerText,
+  
+}`;
   const products = await sanityClient.fetch(productQuery);
   const posts = await sanityClient.fetch(postQuery);
+  const production = await sanityClient.fetch(productionQuery);
 
   return {
     props: {
       products,
       posts,
+      production,
     },
   }
 };

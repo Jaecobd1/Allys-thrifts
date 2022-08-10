@@ -2,10 +2,25 @@ import Link from "next/link";
 import { urlFor } from "../utils/sanity";
 import { Product } from '../utils/typings'
 import { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+
+
 
 
 interface Props {
   products: [Product];
+}
+
+const Buttons = () => {
+    return (
+        <div>
+            <div className="bg-primary p-3 rounded-full">
+                <button>
+                    Buy Now
+                </button>
+            </div>
+        </div>
+    )
 }
 
 export default function Products({ products }) {
@@ -21,36 +36,65 @@ export default function Products({ products }) {
                 <br />
             </div>
             
-            
-            <div className="p-5 grid w-screen bg-amber-100 gap-4 md:grid-cols-4 sm:grid-cols-2">
+            <div className="">
+                <motion.div className="px-4 grid gap-4 md:grid-cols-4 sm:grid-cols-2 justify-items-center py-5"
+                    
+                >
                 
-                {products.map(product =>
-                        <div className="flex items-center p-5 min-w-30 max-w-xs shadow-lg bg-lightGrey hover:bg- rounded-lg h-min ">
+                    {products.map(product =>
+                            <>
+                                <motion.div className="flex items-center p-5 min-w-30 max-w-xs hover:shadow-lg bg-white hover:bg-lightGrey rounded-lg h-min border-4 shadow-xl border-primary"
+                                    animate={{
+                                        y: 0,
+                                        opacity:1
+                                    }}
+                                    initial={{
+                                        y: 200,
+                                        opacity: 0
+                                    }}
+                                    transition={{
+                                        ease: 'easeInOut',
+                                        duration: 2
+                                    }}
+                                >
                         {/* Turn h1 into links later */}
                         <Link href={`/product/${product.slug.current}`}>
-                            <div className="grid grid-row-4  justify-items-center w-full">
+                            <div className="grid  justify-items-center w-full">
                                 {/* NAME OF PRODUCT */}
-                                <h1 className="text-center text-xl">{product.name}</h1>
+                                <h1 className="text-center sm:text-xl">{product.name}</h1>
                                 
                                 {/* Main Image of Product */}
-                                <div >
+                                <div className="" >
                                     <img
-                                        className="h-40 w-40  rounded-2xl"
+                                        className="rounded-2xl h-40 sm:h-52 lg:h-60"
                                         src={urlFor(product.image).url()!
-                                    } alt="" />
+                                             } alt=""
+                                        
+                                    />
+                                            </div>
+                                            
+                                    <div className="flex w-full justify-around py-2  ">
+                                     <div className="">
+                                        <h2>${product.price}</h2>
+                                    </div>
+                                    <div className="">
+                                         <h2>Size: {product.size?product.size:"N/A"}</h2>
+                                                </div>
+                                                
+                                                </div>
+                                    
+                                
                                 </div>
+                        </Link>
                         
-                        <div className="justify-items-end">
-                            <h2>${product.price}</h2>
-                                </div>
-                                <div>
-                                    <h2>Size: {product.size?product.size:"N/A"}</h2>
-                                </div>
-                                </div>
-                            </Link>
-                        </div>)}
+                                </motion.div>
+                                
+                    </>
+                    
+                )}
                         
-            </div>
+                </motion.div>
+                </div>
         </>
     )
 };

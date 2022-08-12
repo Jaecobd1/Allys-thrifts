@@ -29,12 +29,7 @@ export default function Products({ products }) {
     return (
         <>
 
-            <div className="w-screen p-5">
-                <h1>Thrifts:</h1>
-                {/* add filters here */}
-                
-                <br />
-            </div>
+           
             
             <div className="">
                 <motion.div className="px-4 grid gap-4 md:grid-cols-4 sm:grid-cols-2 justify-items-center py-5"
@@ -61,7 +56,7 @@ export default function Products({ products }) {
                         <Link href={`/product/${product.slug.current}`}>
                             <div className="grid  justify-items-center w-full">
                                 {/* NAME OF PRODUCT */}
-                                <h1 className="text-center sm:text-xl">{product.name}</h1>
+                                <h1 className="text-center sm:text-xl underline">{product.name}</h1>
                                 
                                 {/* Main Image of Product */}
                                 <div className="" >
@@ -80,9 +75,20 @@ export default function Products({ products }) {
                                     <div className="">
                                          <h2>Size: {product.size?product.size:"N/A"}</h2>
                                                 </div>
-                                                
-                                                </div>
-                                    
+                                            
+                                        </div>
+                                        <div className="flex space-x-2">
+                                    <div className="w-max-min p-2 text-sm hover:bg-darkGrey hover:text-white bg-secondary rounded-full">
+                                                <button>
+                                                    Buy Now
+                                                </button>
+                                        </div>
+                                         <div className="w-max-min p-2 text-sm hover:bg-darkGrey hover:text-white bg-secondary rounded-full">
+                                                <button>
+                                                    Add to Cart
+                                                </button>
+                                        </div>
+                                        </div>
                                 
                                 </div>
                         </Link>

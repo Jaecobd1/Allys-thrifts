@@ -33,7 +33,9 @@ function NavBar(production) {
                         </a>
                         </Link>
                         <Link href="/cart" >
-                            <a>Cart</a>
+                                <a>Cart </a>
+                                {/* Add shopping cart total with snip
+                                cart */}
                         </Link>
                 </nav>
                 </div>

@@ -9,7 +9,6 @@ interface Props {
 }
 
 function Product({ product }: Props) {
-    
     return (
         <>
             <Head>
@@ -21,7 +20,7 @@ function Product({ product }: Props) {
                 {/* Title */}
                 <h1>{product.name}</h1>
             </div>
-            <div className="w-full flex justify-center bg-white p-5">
+            <div className="w-full grid justify-center bg-primary p-5">
                 {/* photos */}
                 <img
                     className=""
@@ -31,20 +30,42 @@ function Product({ product }: Props) {
                         width='500'
                     
                     />
+                    <div className="">
+                    {product.images.map(image =>
+                        <>
+                            <img
+                            className=""
+                             src={urlFor(image).url()!
+                             } alt=""
+                            height='200'
+                             width='200'
+                    
+                             />
+                            </>
+                        )}
+                        </div>
                 </div>
-                <div className="bg-primary w-full h-72 flex justify-around ">
+                <div className="bg-primary w-full h-72 justify-around flex items-center ">
             <div className="">
                 {/* Info */}
                 <p>{product.description}</p>
                 </div>
                 
-            <div>
+            <div className="">
                 <p>${product.price}</p>
                 </div>
-                <div className="bg-secondary flex h-12 w-24 rounded-full text-center">
-                    
-                    <button className="md:p-3 p-1" >Buy Now</button>
-                    </div>
+                <div className="flex space-x-2">
+                                    <div className="w-max-min p-2 text-sm hover:bg-darkGrey hover:text-white bg-secondary rounded-full">
+                                                <button>
+                                                    Buy Now
+                                                </button>
+                                        </div>
+                                         <div className="w-max-min p-2 text-sm hover:bg-darkGrey hover:text-white bg-secondary rounded-full">
+                                                <button>
+                                                    Add to Cart
+                                                </button>
+                                        </div>
+                                        </div>
                     </div>
             </div>
             </>
@@ -85,7 +106,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   name,
   price,
   image,
-  images,
+  "images": images[],
   size,
   description,
   brand,

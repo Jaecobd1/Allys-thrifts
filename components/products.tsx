@@ -79,7 +79,14 @@ export default function Products({ products }) {
                                         </div>
                                         <div className="flex space-x-2">
                                     <div className="w-max-min p-2 text-sm hover:bg-darkGrey hover:text-white bg-secondary rounded-full">
-                                                <button>
+                                                <button
+                                                className={`snipcart-add-item`}
+                                                data-item-id={product.id}
+                                                data-item-name={product.name}
+                                                data-item-price={product.price}
+                                                data-item-url={product.slug}
+                                                data-item-image={urlFor(product.image).url()}
+                                                >
                                                     Buy Now
                                                 </button>
                                         </div>

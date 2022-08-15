@@ -1,14 +1,40 @@
-// import { useState, useEffect } from 'react'
-// import Link from 'next/link'
-// import config from "../utils/config";
-// import { sanityStaticProps, useSanityQuery, PortableText } from "../utils/sanity"
-// import groq from "next-sanity"
+import BlogPost from '../components/BlogPosts'
+import { sanityClient } from '../utils/sanity';
+import { Post } from '../utils/typings';
 
-// const myQuery = groq(`*[_type == "posts"]`);
+interface Props {
+    posts: [Post];
+}
 
+function blog({posts}: Props) {
+    return (
+        <div>
+            <div>
+                <BlogPost posts={posts} />
+            </div>
+        </div>
+    )
+}
 
-// export const getStaticProps = async (context) => ({
-//   props: await sanityStaticProps({context, query: myQuery})
-// });
+export const getServerSideProps = async () => {
+    const postQuery = `*[_type == "posts"]{
+  title,
+  "author": author->firstName,
+  content,
+  image,
+  visable,
+  slug,
   
+  
+}`;
+    
+    const posts = await sanityClient.fetch(postQuery);
 
+    return {
+        props: {
+            posts,
+        }
+    }
+}
+
+export default blog

@@ -14,6 +14,7 @@ export interface Product {
     homePage: boolean;
     isAvailable: boolean;
     name: string;
+    id: string;
 
 };
 export interface Post {

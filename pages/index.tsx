@@ -11,6 +11,8 @@ import BlogPosts from '../components/BlogPosts'
 import NavBar from '../components/NavBar'
 import Footer from '../components/Footer'
 import Banner from '../components/Banner'
+import Link from 'next/link'
+import script from 'next/script'
 
 
 interface Props {
@@ -24,7 +26,7 @@ export default function HomePage({ products, posts, production }: Props) {
     <>
       <Head>
         <title>Home</title>
-      </Head>
+        </Head>
       <NavBar />
       <Banner production={production}/>
       <body>
@@ -34,6 +36,13 @@ export default function HomePage({ products, posts, production }: Props) {
         {/* Hero Section */}
         <Hero production={production} />
         <Products products={products} />
+        <div className="flex w-screen justify-end p-5">
+        <Link href="/product">
+          <a>
+            View All Products
+          </a>
+          </Link>
+          </div>
        
         <BlogPosts posts={posts}/>
       </body>

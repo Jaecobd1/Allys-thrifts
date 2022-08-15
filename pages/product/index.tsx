@@ -20,22 +20,28 @@ function index({ products, productsOldest }: Props) {
         "Oldest": productsOldest,
 
     };
+
+    useEffect(() => {
+        
+    }, [dropDown]);
+
     return (
         <>
             <NavBar />
             <div className="w-screen h-screen">
                 <div>
-                    <div className="flex w-screen justify-end px-5">
+                    <div className="flex w-screen justify-end p-5">
                         <select className="bg-none">
-                            <option value="Most Recent" onClick={()=> setDropDown("Most Recent")}>Most Recent</option>
+                            <option value="Most Recent" onSubmit={()=> setDropDown("Most Recent")}>Most Recent</option>
                             <option value="Oldest" onClick={()=> setDropDown("Oldest")}>Oldest</option>
                             <option value="Lowest Price" onClick={()=> setDropDown("Lowest Price")}>Lowest Price</option>
                             <option value="Highest Price" onClick={()=> setDropDown("Highest Price")}>Highest Price</option>
                         </select>
                         
                     </div>
-
-                        <Products products={products} />
+                    <Products products={products} />
+                    
+                    }
                     
             </div>
             </div>

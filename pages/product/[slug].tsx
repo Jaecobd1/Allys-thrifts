@@ -15,12 +15,12 @@ function Product({ product }: Props) {
                 <title>{product.title}</title>
             </Head>
             <NavBar/>
-        <div className="grid p-5 bg-primary w-screen h-screen justify-items-center">
-            <div className="text-6xl items-center p-5">
+        <div className="grid p-5 bg-white w-screen h-screen mx-auto items-center">
+            <div className="text-6xl items-center p-5 underline text-center">
                 {/* Title */}
                 <h1>{product.name}</h1>
             </div>
-            <div className="w-full grid justify-center bg-primary p-5">
+            <div className="w-screenbg-white grid md:grid-cols-2 grid-cols-1 gap-4 items-center p-5">
                 {/* photos */}
                 <img
                     className=""
@@ -30,7 +30,7 @@ function Product({ product }: Props) {
                         width='500'
                     
                     />
-                    <div className="">
+                    <div className="grid gap-4 grid-cols-2 p-5">
                     {product.images.map(image =>
                         <>
                             <img
@@ -45,18 +45,25 @@ function Product({ product }: Props) {
                         )}
                         </div>
                 </div>
-                <div className="bg-primary w-full h-72 justify-around flex items-center ">
+                <div className="bg-white w-full h-72 justify-around flex items-center ">
             <div className="">
                 {/* Info */}
-                <p>{product.description}</p>
+                <p>Description: {product.description? product.description: 'N/A'}</p>
                 </div>
                 
             <div className="">
-                <p>${product.price}</p>
+                <p>Price: ${product.price}</p>
                 </div>
                 <div className="flex space-x-2">
                                     <div className="w-max-min p-2 text-sm hover:bg-darkGrey hover:text-white bg-secondary rounded-full">
-                                                <button>
+                                                 <button
+                                                className={`snipcart-add-item`}
+                                                data-item-id={product.id}
+                                                data-item-name={product.name}
+                                                data-item-price={product.price}
+                                                data-item-url={product.slug}
+                                                data-item-image={urlFor(product.image).url()}
+                                                >
                                                     Buy Now
                                                 </button>
                                         </div>

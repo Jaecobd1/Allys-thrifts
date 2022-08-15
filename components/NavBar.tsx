@@ -27,7 +27,7 @@ function NavBar(production) {
                             About Us
                         </a>
                     </Link>
-                    <Link href="/blog">
+                    <Link href="/Blog">
                         <a>
                             Blog
                         </a>
